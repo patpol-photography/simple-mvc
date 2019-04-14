@@ -7,11 +7,11 @@ namespace RazorWeb.Pages
 
     public class ArchiveModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
-        private readonly IApi _api;
+        private readonly IApi api;
 
         public ArchiveModel(IApi api)
         {
-            this._api = api;
+            this.api = api;
         }
 
         public BlogArchive Data { get; private set; }
@@ -19,8 +19,8 @@ namespace RazorWeb.Pages
         public async Task OnGet(Guid id, int? year = null, int? month = null, int? page = null,
             Guid? category = null, Guid? tag = null)
         {
-            this.Data = await this._api.Pages.GetByIdAsync<BlogArchive>(id);
-            this.Data.Archive = await this._api.Archives.GetByIdAsync(id, page, category, tag, year, month);
+            this.Data = await this.api.Pages.GetByIdAsync<BlogArchive>(id);
+            this.Data.Archive = await this.api.Archives.GetByIdAsync(id, page, category, tag, year, month);
         }
     }
 }

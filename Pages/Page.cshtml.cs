@@ -7,18 +7,18 @@ namespace RazorWeb.Pages
 
     public class PageModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
-        private readonly IApi _api;
+        private readonly IApi api;
 
         public PageModel(IApi api)
         {
-            this._api = api;
+            this.api = api;
         }
 
         public StandardPage Data { get; private set; }
 
         public async Task OnGet(Guid id)
         {
-            this.Data = await this._api.Pages.GetByIdAsync<StandardPage>(id);
+            this.Data = await this.api.Pages.GetByIdAsync<StandardPage>(id);
         }
     }
 }

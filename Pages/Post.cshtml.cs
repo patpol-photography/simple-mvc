@@ -7,18 +7,18 @@ namespace RazorWeb.Pages
 
     public class PostModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
-        private readonly IApi _api;
+        private readonly IApi api;
 
         public PostModel(IApi api)
         {
-            this._api = api;
+            this.api = api;
         }
 
         public BlogPost Data { get; private set; }
 
         public async Task OnGet(Guid id)
         {
-            this.Data = await this._api.Posts.GetByIdAsync<BlogPost>(id);
+            this.Data = await this.api.Posts.GetByIdAsync<BlogPost>(id);
         }
     }
 }
