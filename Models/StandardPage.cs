@@ -8,14 +8,14 @@
  * 
  */
 
-using Piranha.AttributeBuilder;
-using Piranha.Models;
-using System.Collections.Generic;
-
 namespace RazorWeb.Models
 {
+    using Piranha.AttributeBuilder;
+    using Piranha.Models;
+    using RazorWeb.Models.Regions;
+
     /// <summary>
-    /// Basic page with main content in markdown.
+    ///     Basic page with main content in markdown.
     /// </summary>
     [PageType(Title = "Standard Page")]
     [PageTypeRoute(Title = "Narrow", Route = "/page")]
@@ -23,9 +23,9 @@ namespace RazorWeb.Models
     public class StandardPage : Page<StandardPage>
     {
         /// <summary>
-        /// Gets/sets the page header.
+        ///     Gets/sets the page header.
         /// </summary>
         [Region]
-        public Regions.Hero Hero { get; set; }
+        public Hero Hero { get; set; }
     }
 }

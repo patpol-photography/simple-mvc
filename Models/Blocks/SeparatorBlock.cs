@@ -8,13 +8,12 @@
  * 
  */
 
-using System;
-using Piranha.Extend;
-
 namespace RazorWeb.Models.Blocks
 {
+    using Piranha.Extend;
+
     /// <summary>
-    /// Single column quote block.
+    ///     Single column quote block.
     /// </summary>
     [BlockType(Name = "Separator", Category = "Content", Icon = "fas fa-pause")]
     public class SeparatorBlock : Block

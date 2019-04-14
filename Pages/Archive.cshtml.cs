@@ -1,25 +1,26 @@
-using System;
-using System.Threading.Tasks;
-using Piranha;
-using RazorWeb.Models;
-
 namespace RazorWeb.Pages
 {
+    using System;
+    using System.Threading.Tasks;
+    using Piranha;
+    using RazorWeb.Models;
+
     public class ArchiveModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
         private readonly IApi _api;
-        public BlogArchive Data { get; private set; }
 
-        public ArchiveModel(IApi api) : base()
+        public ArchiveModel(IApi api)
         {
-            _api = api;
+            this._api = api;
         }
+
+        public BlogArchive Data { get; private set; }
 
         public async Task OnGet(Guid id, int? year = null, int? month = null, int? page = null,
             Guid? category = null, Guid? tag = null)
         {
-            Data = await _api.Pages.GetByIdAsync<Models.BlogArchive>(id);
-            Data.Archive = await _api.Archives.GetByIdAsync(id, page, category, tag, year, month);
+            this.Data = await this._api.Pages.GetByIdAsync<BlogArchive>(id);
+            this.Data.Archive = await this._api.Archives.GetByIdAsync(id, page, category, tag, year, month);
         }
     }
 }

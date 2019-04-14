@@ -18,14 +18,21 @@
             width: "100%",
             height: "300",
             autoresize_min_height: 340,
-            content_css: ["//fonts.googleapis.com/css?family=Gentium+Book+Basic:700", "//fonts.googleapis.com/css?family=Open+Sans:300,400,600", "@Url.Content("~/manager/assets/css/editor.min.css")"],
-            toolbar: "bold italic | bullist numlist hr | alignleft aligncenter alignright | formatselect styleselect | piranhalink piranhaimage",
-            block_formats: 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3;Header 4=h4;Preformatted=pre;Quote=blockquote',
+            content_css: [
+                "//fonts.googleapis.com/css?family=Gentium+Book+Basic:700",
+                "//fonts.googleapis.com/css?family=Open+Sans:300,400,600",
+                "@Url.Content("~/manager/assets/css/editor.min.css")"
+            ],
+            toolbar:
+                "bold italic | bullist numlist hr | alignleft aligncenter alignright | formatselect styleselect | piranhalink piranhaimage",
+            block_formats:
+                'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3;Header 4=h4;Preformatted=pre;Quote=blockquote',
             style_formats: styles,
-            setup: function (editor) {
-                editor.on('change', function () {
-                    editor.save();
-                });
+            setup: function(editor) {
+                editor.on('change',
+                    function() {
+                        editor.save();
+                    });
             }
         });
     }
@@ -43,8 +50,10 @@
             ],
             width: "100%",
             autoresize_min_height: 0,
-            toolbar: "bold italic | bullist numlist hr | alignleft aligncenter alignright | formatselect styleselect | piranhalink piranhaimage",
-            block_formats: 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3;Header 4=h4;Preformatted=pre;Quote=blockquote',
+            toolbar:
+                "bold italic | bullist numlist hr | alignleft aligncenter alignright | formatselect styleselect | piranhalink piranhaimage",
+            block_formats:
+                'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3;Header 4=h4;Preformatted=pre;Quote=blockquote',
             style_formats: styles
         });
     }

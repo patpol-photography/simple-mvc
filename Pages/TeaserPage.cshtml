@@ -11,7 +11,7 @@
     <div class="container latest-post">
         <div class="row">
             <div class="col text-center">
-                Latest news: 
+                Latest news:
                 <strong>@Model.Data.LatestPost.Published.Value.ToString("yyyy-MM-dd")</strong>
                 -
                 <a href="@Model.Data.LatestPost.Permalink">@Model.Data.LatestPost.Title</a>
@@ -20,7 +20,7 @@
     </div>
 }
 
-<partial name="Partial/Teasers" for="Data.Teasers" />
+<partial name="Partial/Teasers" for="Data.Teasers"/>
 
 <div class="container body-container">
     <div class="row justify-content-center">
@@ -30,4 +30,4 @@
     </div>
 </div>
 
-<partial name="Partial/Quotes" for="Data.Quotes" />
+<partial name="Partial/Quotes" for="Data.Quotes"/>

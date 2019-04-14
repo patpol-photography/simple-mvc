@@ -1,4 +1,5 @@
 @using Microsoft.AspNetCore.Hosting
+@using Piranha.Models
 @inject IHostingEnvironment Env
 
 <!doctype html>
@@ -17,47 +18,52 @@
 
     <title>@ViewData["Title"]</title>
 
-    @if (Model is Piranha.Models.IMeta) {
-        <partial name="Partial/_Meta.cshtml" /> 
+    @if (Model is IMeta)
+    {
+        <partial name="Partial/_Meta.cshtml"/>
     }
 
-    @RenderSection("head", required: false)
+    @RenderSection("head", false)
 </head>
 <body>
-    <header role="banner">
-        <div class="menu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <partial name="Partial/_Menu.cshtml" />
-                        <div class="social">
-                            <a href="https://twitter.com/piranhacms" target="blank"><img src="~/assets/img/twitter.png"></a>
-                            <a href="https://github.com/piranhacms/piranha.core" target="blank"><img src="~/assets/img/github.png"></a>
-                        </div>
+<header role="banner">
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <partial name="Partial/_Menu.cshtml"/>
+                    <div class="social">
+                        <a href="https://twitter.com/piranhacms" target="blank">
+                            <img src="~/assets/img/twitter.png">
+                        </a>
+                        <a href="https://github.com/piranhacms/piranha.core" target="blank">
+                            <img src="~/assets/img/github.png">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <div class="main-body">
-        @RenderBody()
+<div class="main-body">
+    @RenderBody()
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        Copyright &copy; 2018 Piranha CMS | <a href="https://twitter.com/piranhacms">@@piranhacms</a>
-                    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    Copyright &copy; 2018 Piranha CMS | <a href="https://twitter.com/piranhacms">@@piranhacms</a>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    @RenderSection("script", required: false)
+@RenderSection("script", false)
 </body>
 </html>

@@ -1,32 +1,33 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Piranha;
-using Piranha.Models;
-using RazorWeb.Models;
-
 namespace RazorWeb.Pages
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using Piranha;
+    using Piranha.Models;
+    using RazorWeb.Models;
+
     public class TeaserPageModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
         private readonly IApi _api;
         private readonly IDb _db;
-        public TeaserPage Data { get; private set; }
 
-        public TeaserPageModel(IApi api, IDb db) : base()
+        public TeaserPageModel(IApi api, IDb db)
         {
-            _api = api;
-            _db = db;
+            this._api = api;
+            this._db = db;
         }
+
+        public TeaserPage Data { get; private set; }
 
         public async Task OnGet(Guid id, bool startpage = false)
         {
-            Data = await _api.Pages.GetByIdAsync<TeaserPage>(id);
+            this.Data = await this._api.Pages.GetByIdAsync<TeaserPage>(id);
 
             if (startpage)
             {
-                var latest = await _db.Posts
+                var latest = await this._db.Posts
                     .Where(p => p.Published <= DateTime.Now)
                     .OrderByDescending(p => p.Published)
                     .Take(1)
@@ -35,7 +36,7 @@ namespace RazorWeb.Pages
 
                 if (latest.Count() > 0)
                 {
-                    Data.LatestPost = await _api.Posts
+                    this.Data.LatestPost = await this._api.Posts
                         .GetByIdAsync<PostInfo>(latest.First());
                 }
             }

@@ -8,31 +8,31 @@
  * 
  */
 
-using Piranha.AttributeBuilder;
-using Piranha.Extend.Fields;
-using Piranha.Models;
-
 namespace RazorWeb.Models.Regions
 {
+    using Piranha.AttributeBuilder;
+    using Piranha.Extend.Fields;
+    using Piranha.Models;
+
     /// <summary>
-    /// Simple hero region.
+    ///     Simple hero region.
     /// </summary>
     public class Hero
     {
         /// <summary>
-        /// Gets/sets the optional subtitle.
+        ///     Gets/sets the optional subtitle.
         /// </summary>
         [Field(Options = FieldOption.HalfWidth)]
         public StringField Subtitle { get; set; }
 
         /// <summary>
-        /// Gets/sets the optional primary image.
+        ///     Gets/sets the optional primary image.
         /// </summary>
         [Field(Title = "Primary Image", Options = FieldOption.HalfWidth)]
         public ImageField PrimaryImage { get; set; }
 
         /// <summary>
-        /// Gets/sets the optional ingress.
+        ///     Gets/sets the optional ingress.
         /// </summary>
         [Field]
         public HtmlField Ingress { get; set; }

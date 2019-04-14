@@ -1,24 +1,24 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.DependencyInjection;
-using Piranha;
-using Piranha.AspNetCore.Identity.SQLite;
-
-namespace RazorWeb
+﻿namespace RazorWeb
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Piranha;
+    using Piranha.AspNetCore.Identity.SQLite;
+    using Piranha.AttributeBuilder;
+    using Piranha.Cache;
+    using Piranha.Manager.Binders;
+    using RazorWeb.Models;
+    using RazorWeb.Models.Blocks;
+
     public class Startup
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(config =>
-            {
-                config.ModelBinderProviders.Insert(0, new Piranha.Manager.Binders.AbstractModelBinderProvider());
-            });
+            services.AddMvc(config => { config.ModelBinderProviders.Insert(0, new AbstractModelBinderProvider()); });
             services.AddPiranhaApplication();
             services.AddPiranhaFileStorage();
             services.AddPiranhaImageSharp();
@@ -42,20 +42,20 @@ namespace RazorWeb
             App.Init(api);
 
             // Configure cache level
-            App.CacheLevel = Piranha.Cache.CacheLevel.Basic;
+            App.CacheLevel = CacheLevel.Basic;
 
             // Custom components
-            App.Blocks.Register<Models.Blocks.SeparatorBlock>();
+            App.Blocks.Register<SeparatorBlock>();
 
             // Build content types
-            var pageTypeBuilder = new Piranha.AttributeBuilder.PageTypeBuilder(api)
-                .AddType(typeof(Models.BlogArchive))
-                .AddType(typeof(Models.StandardPage))
-                .AddType(typeof(Models.TeaserPage));
+            var pageTypeBuilder = new PageTypeBuilder(api)
+                .AddType(typeof(BlogArchive))
+                .AddType(typeof(StandardPage))
+                .AddType(typeof(TeaserPage));
             pageTypeBuilder.Build()
                 .DeleteOrphans();
-            var postTypeBuilder = new Piranha.AttributeBuilder.PostTypeBuilder(api)
-                .AddType(typeof(Models.BlogPost));
+            var postTypeBuilder = new PostTypeBuilder(api)
+                .AddType(typeof(BlogPost));
             postTypeBuilder.Build()
                 .DeleteOrphans();
 
@@ -66,9 +66,9 @@ namespace RazorWeb
             app.UsePiranhaManager();
             app.UseMvc(routes =>
             {
-                routes.MapRoute(name: "areaRoute",
-                    template: "{area:exists}/{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" });
+                routes.MapRoute("areaRoute",
+                    "{area:exists}/{controller}/{action}/{id?}",
+                    new {controller = "Home", action = "Index"});
             });
 
             Seed.RunAsync(api).GetAwaiter().GetResult();

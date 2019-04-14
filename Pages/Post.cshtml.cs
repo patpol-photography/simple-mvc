@@ -1,23 +1,24 @@
-using System;
-using System.Threading.Tasks;
-using Piranha;
-using RazorWeb.Models;
-
 namespace RazorWeb.Pages
 {
+    using System;
+    using System.Threading.Tasks;
+    using Piranha;
+    using RazorWeb.Models;
+
     public class PostModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
         private readonly IApi _api;
-        public BlogPost Data { get; private set; }
 
-        public PostModel(IApi api) : base()
+        public PostModel(IApi api)
         {
-            _api = api;
+            this._api = api;
         }
+
+        public BlogPost Data { get; private set; }
 
         public async Task OnGet(Guid id)
         {
-            Data = await _api.Posts.GetByIdAsync<BlogPost>(id);
+            this.Data = await this._api.Posts.GetByIdAsync<BlogPost>(id);
         }
     }
 }

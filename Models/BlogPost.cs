@@ -8,21 +8,22 @@
  * 
  */
 
-using Piranha.AttributeBuilder;
-using Piranha.Models;
-
 namespace RazorWeb.Models
 {
+    using Piranha.AttributeBuilder;
+    using Piranha.Models;
+    using RazorWeb.Models.Regions;
+
     /// <summary>
-    /// Basic post with main content in markdown.
+    ///     Basic post with main content in markdown.
     /// </summary>
     [PostType(Title = "Blog post")]
     public class BlogPost : Post<BlogPost>
     {
         /// <summary>
-        /// Gets/sets the heading.
+        ///     Gets/sets the heading.
         /// </summary>
-        [Region()]
-        public Regions.Hero Hero { get; set; }        
+        [Region]
+        public Hero Hero { get; set; }
     }
 }

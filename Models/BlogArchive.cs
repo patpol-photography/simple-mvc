@@ -8,21 +8,22 @@
  * 
  */
 
-using Piranha.AttributeBuilder;
-using Piranha.Models;
-
 namespace RazorWeb.Models
 {
+    using Piranha.AttributeBuilder;
+    using Piranha.Models;
+    using RazorWeb.Models.Regions;
+
     /// <summary>
-    /// Basic blog page.
+    ///     Basic blog page.
     /// </summary>
     [PageType(Title = "Blog archive", UseBlocks = false)]
     public class BlogArchive : ArchivePage<BlogArchive>
     {
         /// <summary>
-        /// Gets/sets the page header.
+        ///     Gets/sets the page header.
         /// </summary>
         [Region]
-        public Regions.Hero Hero { get; set; }
+        public Hero Hero { get; set; }
     }
 }

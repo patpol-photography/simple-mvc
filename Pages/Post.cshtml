@@ -9,12 +9,13 @@
         <div class="col-lg-8 col-md-10 col-xs-12">
             <h1>@Model.Data.Title</h1>
 
-            <p class="small">Published:
-                @if (Model.Data.Published.HasValue) 
+            <p class="small">
+                Published:
+                @if (Model.Data.Published.HasValue)
                 {
                     <text>@Model.Data.Published.Value.ToString("yyyy-MM-dd") in <a href="~/blog/category/@Model.Data.Category.Slug">@Model.Data.Category.Title</a> by <a href="https://twitter.com/tidyui" target="_blank">Håkan Edling</a></text>
-                } 
-                else 
+                }
+                else
                 {
                     <span class="label label-info">Unpublished</span>
                 }

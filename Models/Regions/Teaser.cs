@@ -8,37 +8,37 @@
  * 
  */
 
-using Piranha.AttributeBuilder;
-using Piranha.Extend.Fields;
-using Piranha.Models;
-
 namespace RazorWeb.Models.Regions
 {
+    using Piranha.AttributeBuilder;
+    using Piranha.Extend.Fields;
+    using Piranha.Models;
+
     /// <summary>
-    /// Simple region for a teaser.
+    ///     Simple region for a teaser.
     /// </summary>
     public class Teaser
     {
         /// <summary>
-        /// Gets/sets the title.
+        ///     Gets/sets the title.
         /// </summary>
         [Field(Options = FieldOption.HalfWidth)]
         public StringField Title { get; set; }
 
         /// <summary>
-        /// Gets/sets the subtitle.
+        ///     Gets/sets the subtitle.
         /// </summary>
         [Field(Options = FieldOption.HalfWidth)]
         public StringField SubTitle { get; set; }
 
         /// <summary>
-        /// Gets/sets the optional teaser image.
+        ///     Gets/sets the optional teaser image.
         /// </summary>
         [Field]
         public ImageField Image { get; set; }
 
         /// <summary>
-        /// Gets/sets the main body.
+        ///     Gets/sets the main body.
         /// </summary>
         [Field]
         public HtmlField Body { get; set; }
